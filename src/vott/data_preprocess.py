@@ -3,7 +3,7 @@
 """
 Sample converter.
 """
-import cPickle as pickle
+import pickle
 
 import cv2
 import numpy as np
@@ -30,7 +30,7 @@ class SampleConverter(object):
         self.store_data(data, output_file_name)
 
     def store_data(self, data, output_file_name):
-        with open(output_file_name, 'w') as f:
+        with open(output_file_name, 'wb') as f:
             pickle.dump(data, f)
 
     def extact_image(self, video_file_name, max_frame, video_meta):
@@ -102,7 +102,7 @@ class SampleConverter(object):
         images, labels = [], []
 
         with open(sample_file_name, 'rb') as finp:
-            data = pickle.load(finp)
+            data = pickle.load(finp, encoding='bytes')
             batch_images = data["data"].astype(np.float32) / 255.0
             batch_labels = np.array(data["labels"], dtype=np.int32)
             images.append(batch_images)
@@ -112,13 +112,14 @@ class SampleConverter(object):
         labels = np.concatenate(labels, axis=0)
         images = np.reshape(images, [-1, 360, 480, 3])
 
+        print(images.shape)
         return images, labels
 
 
 if __name__ == '__main__':
     converter = SampleConverter()
 
-    converter.convert('tpr/train.mp4', 'data/train_1')
-    converter.convert('tpr/test.mp4', 'data/test_1')
-
+    # converter.convert('tpr/train.mp4', 'data/train_1')
+    # converter.convert('tpr/test.mp4', 'data/test_1')
     converter.read_data('data/train_1')
+    converter.read_data('data/test_1')
