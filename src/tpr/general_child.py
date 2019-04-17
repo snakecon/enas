@@ -8,14 +8,14 @@ import sys
 import numpy as np
 import tensorflow as tf
 
-from src.vott.models import Model
-from src.vott.image_ops import conv
-from src.vott.image_ops import fully_connected
-from src.vott.image_ops import batch_norm
-from src.vott.image_ops import batch_norm_with_mask
-from src.vott.image_ops import relu
-from src.vott.image_ops import max_pool
-from src.vott.image_ops import global_avg_pool
+from src.tpr.models import Model
+from src.tpr.image_ops import conv
+from src.tpr.image_ops import fully_connected
+from src.tpr.image_ops import batch_norm
+from src.tpr.image_ops import batch_norm_with_mask
+from src.tpr.image_ops import relu
+from src.tpr.image_ops import max_pool
+from src.tpr.image_ops import global_avg_pool
 
 from src.utils import count_model_params
 from src.utils import get_train_ops

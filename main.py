@@ -19,12 +19,12 @@ from src.utils import DEFINE_integer
 from src.utils import DEFINE_string
 from src.utils import print_user_flags
 
-from src.vott.data_utils import read_data
-from src.vott.general_controller import GeneralController
-from src.vott.general_child import GeneralChild
+from src.tpr.data_utils import read_data
+from src.tpr.general_controller import GeneralController
+from src.tpr.general_child import GeneralChild
 
-from src.vott.micro_controller import MicroController
-from src.vott.micro_child import MicroChild
+from src.tpr.micro_controller import MicroController
+from src.tpr.micro_child import MicroChild
 
 flags = tf.app.flags
 FLAGS = flags.FLAGS
