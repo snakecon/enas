@@ -30,7 +30,7 @@ flags = tf.app.flags
 FLAGS = flags.FLAGS
 
 DEFINE_boolean("reset_output_dir", True, "Delete output_dir if exists.")
-DEFINE_string("data_path", "data/cifar10", "")
+DEFINE_string("data_path", "src/tpr/tpr_dataset", "")
 DEFINE_string("output_dir", "outputs", "")
 DEFINE_string("data_format", "NHWC", "'NHWC' or 'NCHW'")
 DEFINE_string("search_for", "macro", "Must be [macro|micro]")

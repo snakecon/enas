@@ -18,14 +18,12 @@ def _read_data(data_path, train_files):
     full_name = os.path.join(data_path, file_name)
     with open(full_name, 'rb') as finp:
       data = pickle.load(finp, encoding='bytes')
-      batch_images = data[b"data"].astype(np.float32) / 255.0
-      batch_labels = np.array(data[b"labels"], dtype=np.int32)
+      batch_images = data["data"].astype(np.float32) / 255.0
+      batch_labels = np.array(data["labels"], dtype=np.int32)
       images.append(batch_images)
       labels.append(batch_labels)
   images = np.concatenate(images, axis=0)
   labels = np.concatenate(labels, axis=0)
-  images = np.reshape(images, [-1, 3, 32, 32])
-  images = np.transpose(images, [0, 2, 3, 1])
 
   print('*' * 48)
   print(images.shape)
@@ -34,17 +32,21 @@ def _read_data(data_path, train_files):
   return images, labels
 
 
-def read_data(data_path, num_valids=5000):
+def read_data(data_path, num_valids=60):
   print("-" * 80)
   print("Reading data")
 
   images, labels = {}, {}
 
   train_files = [
-    "data_batch_1"
+    "train/train-00000-of-00005",
+    "train/train-00001-of-00005",
+    "train/train-00002-of-00005",
+    "train/train-00003-of-00005",
+    "train/train-00004-of-00005",
   ]
   test_file = [
-    "test_batch",
+    "validation/validation-00000-of-00001",
   ]
   images["train"], labels["train"] = _read_data(data_path, train_files)
 
